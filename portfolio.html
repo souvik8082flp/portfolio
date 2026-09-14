@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Souvik Pal — Tech Portfolio</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap');
+:root{
+  --bg:#05070b; --panel:#0a0f17; --line:#1b2b3a; --cyan:#35e8ff;
+  --green:#9cff57; --text:#e9f7ff; --muted:#8294a3;
+}
+*{box-sizing:border-box} html{scroll-behavior:smooth}
+body{margin:0;background:radial-gradient(circle at 80% 10%,#0b2631 0,transparent 30%),var(--bg);color:var(--text);font-family:Inter,system-ui;overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.16;background-image:linear-gradient(#123040 1px,transparent 1px),linear-gradient(90deg,#123040 1px,transparent 1px);background-size:42px 42px;mask-image:linear-gradient(to bottom,#000,transparent 80%)}
+nav{position:fixed;z-index:20;top:16px;left:50%;transform:translateX(-50%);width:min(930px,92%);padding:11px 16px;border:1px solid #1c3544;border-radius:18px;background:#071019c9;backdrop-filter:blur(16px);display:flex;justify-content:space-between;align-items:center}
+.logo{font-family:"Space Mono";color:var(--cyan);font-weight:700}.navlinks{display:flex;gap:20px}.navlinks a{color:#b6c6d0;text-decoration:none;font-size:13px}.navlinks a:hover{color:var(--cyan)}
+main{width:min(1120px,92%);margin:auto}.hero{min-height:100vh;display:grid;align-items:center;grid-template-columns:1.2fr .8fr;gap:60px;padding-top:80px}
+.kicker{font:12px "Space Mono";color:var(--green);letter-spacing:2px}.hero h1{font-size:clamp(52px,9vw,108px);line-height:.9;margin:18px 0;background:linear-gradient(90deg,#fff,var(--cyan));-webkit-background-clip:text;color:transparent}
+.hero h2{font-size:22px;color:#b7c9d4;font-weight:500}.hero p{max-width:640px;color:var(--muted);font-size:16px;line-height:1.8}
+.cta{display:flex;gap:12px;margin-top:28px;flex-wrap:wrap}.btn{padding:13px 18px;border-radius:10px;border:1px solid #244556;color:#dffbff;text-decoration:none;font-weight:600;font-size:13px}.btn.primary{background:var(--cyan);color:#041015;border-color:var(--cyan);box-shadow:0 0 28px #35e8ff33}
+.orb{width:310px;height:310px;border-radius:50%;margin:auto;position:relative;background:radial-gradient(circle at 35% 30%,#1e8795,#07131a 54%,#030508 70%);box-shadow:0 0 90px #35e8ff22, inset 0 0 70px #35e8ff18;animation:float 5s ease-in-out infinite}
+.orb:before,.orb:after{content:"";position:absolute;inset:18px;border:1px solid #35e8ff55;border-radius:50%;transform:rotate(35deg) scaleX(.65)}.orb:after{inset:55px;transform:rotate(-35deg) scaleX(.8)}
+.scan{position:absolute;left:0;right:0;height:1px;background:var(--green);box-shadow:0 0 12px var(--green);animation:scan 3s linear infinite}
+@keyframes scan{0%{top:10%}100%{top:90%}} @keyframes float{50%{transform:translateY(-12px) rotate(2deg)}}
+section{padding:105px 0}.section-head{display:flex;justify-content:space-between;align-items:end;border-bottom:1px solid var(--line);padding-bottom:18px;margin-bottom:30px}.section-head h2{margin:0;font-size:34px}.tag{font:11px "Space Mono";color:var(--green)}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.card{background:linear-gradient(145deg,#0a1119,#070b10);border:1px solid var(--line);border-radius:16px;padding:24px;transition:.25s;position:relative;overflow:hidden}.card:hover{transform:translateY(-6px);border-color:#35e8ff66;box-shadow:0 16px 50px #0008}.card:after{content:"";position:absolute;width:120px;height:120px;border-radius:50%;background:#35e8ff12;right:-60px;top:-60px}.card h3{margin:0 0 10px}.card p,.card li{color:var(--muted);font-size:14px;line-height:1.65}.card ul{padding-left:18px}
+.timeline{display:grid;gap:14px}.row{display:grid;grid-template-columns:160px 1fr;gap:25px;padding:22px;border-left:2px solid #173544;background:#081018}.year{font:12px "Space Mono";color:var(--green)}.row h3{margin:0}.row p{color:var(--muted);line-height:1.6}
+.skills{display:flex;flex-wrap:wrap;gap:10px}.skill{padding:10px 13px;border:1px solid #1d3b49;border-radius:999px;background:#081118;color:#b9d4df;font:12px "Space Mono"}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.stat{padding:20px;border:1px solid var(--line);border-radius:14px}.stat b{font-size:28px;color:var(--cyan)}.stat span{display:block;color:var(--muted);font-size:12px;margin-top:6px}
+footer{padding:50px 0 70px;border-top:1px solid var(--line);color:var(--muted);font-size:13px;display:flex;justify-content:space-between}
+.reveal{opacity:0;transform:translateY(25px);transition:.7s}.reveal.show{opacity:1;transform:none}
+.cursor{display:inline-block;width:9px;height:1em;background:var(--cyan);vertical-align:-2px;animation:blink 1s infinite}@keyframes blink{50%{opacity:0}}
+@media(max-width:800px){.hero{grid-template-columns:1fr}.orb{width:230px;height:230px}.grid{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,1fr)}.row{grid-template-columns:1fr}.navlinks{display:none}}
+</style>
+</head>
+<body>
+<nav><div class="logo">SP_//</div><div class="navlinks"><a href="#about">ABOUT</a><a href="#work">WORK</a><a href="#skills">SKILLS</a><a href="#contact">CONTACT</a></div></nav>
+
+<main>
+<section class="hero" id="about">
+<div>
+<div class="kicker">ECE × DATA × IOT</div>
+<h1>SOUVIK<br>PAL<span class="cursor"></span></h1>
+<h2>Electronics & Communication Engineer</h2>
+<p>Building practical systems at the intersection of electronics, data analytics and connected technology. B.Tech student at NIT Agartala with hands-on IoT training and multiple Power BI analytics projects.</p>
+<div class="cta"><a class="btn primary" href="#work">Explore projects ↓</a><a class="btn" href="#contact">Contact</a></div>
+</div>
+<div class="orb"><div class="scan"></div></div>
+</section>
+
+<section>
+<div class="stats reveal">
+<div class="stat"><b>7.54</b><span>B.Tech CGPA</span></div>
+<div class="stat"><b>90%</b><span>CBSE Science</span></div>
+<div class="stat"><b>9,687</b><span>Prime titles analyzed</span></div>
+<div class="stat"><b>25K</b><span>Netflix records analyzed</span></div>
+</div>
+</section>
+
+<section id="work">
+<div class="section-head"><h2>Selected work</h2><span class="tag">03 PROJECTS</span></div>
+<div class="grid">
+<article class="card reveal"><h3>Amazon Prime Dashboard</h3><p>Interactive Power BI dashboard for content analysis across 9,687 titles and 87 countries.</p><ul><li>Genre and Movies vs TV analysis</li><li>Release-year trends</li><li>Country-wise availability</li><li>Decade-wise growth insights</li></ul></article>
+<article class="card reveal"><h3>Netflix User Analytics</h3><p>End-to-end dashboard analyzing 25,000 synthetic user records and churn risk.</p><ul><li>DAX-based KPIs</li><li>Average watch time</li><li>Engagement classification</li><li>Maps, slicers and churn insights</li></ul></article>
+<article class="card reveal"><h3>Sales Analytics Dashboard</h3><p>Data-driven sales performance dashboard focused on interactive KPIs and actionable trends.</p><ul><li>Drill-downs and slicers</li><li>Data cleaning</li><li>Data modeling</li><li>DAX calculations</li></ul></article>
+</div>
+</section>
+
+<section>
+<div class="section-head"><h2>Experience</h2><span class="tag">HANDS-ON</span></div>
+<div class="timeline">
+<div class="row reveal"><div class="year">JUN — JUL 2025</div><div><h3>IoT Training · NIELIT College Agartala</h3><p>Implemented projects using ESP32. Worked with gas, proximity and photodiode sensors and integrated OLED displays, buzzers and RFID readers for IoT applications.</p></div></div>
+</div>
+</section>
+
+<section id="skills">
+<div class="section-head"><h2>Tech stack</h2><span class="tag">CURRENT TOOLKIT</span></div>
+<div class="skills reveal">
+<span class="skill">C</span><span class="skill">C++</span><span class="skill">Python</span><span class="skill">HTML</span><span class="skill">CSS</span><span class="skill">MySQL</span><span class="skill">Microsoft Excel</span><span class="skill">Power BI</span><span class="skill">DAX</span><span class="skill">ESP32</span><span class="skill">IoT</span><span class="skill">Leadership</span><span class="skill">Teamwork</span>
+</div>
+</section>
+
+<section>
+<div class="section-head"><h2>Leadership</h2><span class="tag">MALHAR CLUB</span></div>
+<div class="grid">
+<div class="card reveal"><h3>Vice President</h3><p>Malhar Club, NIT Agartala · 2024–2025</p></div>
+<div class="card reveal"><h3>Event Head</h3><p>Malhar · AYAAM 9.0 Technical Fest · 2024</p></div>
+</div>
+</section>
+
+<section id="contact">
+<div class="section-head"><h2>Let's connect</h2><span class="tag">OPEN TO OPPORTUNITIES</span></div>
+<div class="card reveal">
+<p style="font-size:16px">For internships, projects and technical opportunities.</p>
+<div class="cta">
+<a class="btn primary" href="mailto:souvikpal8082@gmail.com">souvikpal8082@gmail.com</a>
+<a class="btn" href="tel:+917005666372">+91 7005666372</a>
+</div>
+</div>
+</section>
+
+<footer><span>SOUVIK PAL / PORTFOLIO</span><span>NIT AGARTALA · ECE</span></footer>
+</main>
+<script>
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('show')}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(x=>io.observe(x));
+document.querySelectorAll('.card').forEach(card=>{
+ card.addEventListener('mousemove',e=>{
+   const r=card.getBoundingClientRect(), x=(e.clientX-r.left)/r.width-.5, y=(e.clientY-r.top)/r.height-.5;
+   card.style.transform=`translateY(-6px) rotateX(${y*-4}deg) rotateY(${x*4}deg)`;
+ });
+ card.addEventListener('mouseleave',()=>card.style.transform='');
+});
+</script>
+</body>
+</html>
